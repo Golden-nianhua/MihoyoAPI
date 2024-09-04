@@ -1,0 +1,26 @@
+name: Call API and Save Record
+
+on:
+  schedule:
+    - cron: '0 18 * * *' # 每天18:00执行
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Call API and save the response
+      run: |
+        # 替换下面的URL为你实际要请求的API地址
+        curl -X GET https://api.example.com/data -o api_response.txt
+        echo "API response has been saved."
+
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        # 如果你需要将响应保存到仓库中，则可以启用此操作
+        commit_message: 'Add API response file'
+        file_pattern: 'api_response.txt'
