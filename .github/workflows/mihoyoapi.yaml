@@ -19,7 +19,7 @@ jobs:
         echo "API response has been saved."
 
     - name: Commit and push changes
-      uses: stefanzweifel/git-auto-commit-action@v4
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
         # 如果你需要将响应保存到仓库中，则可以启用此操作
         commit_message: 'Add API response file'
